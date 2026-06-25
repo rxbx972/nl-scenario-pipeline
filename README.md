@@ -20,10 +20,12 @@ QA-MCP-Automation/
 ├── scripts/
 │   ├── generate_unique_id.py             # 유니크 ID 생성
 │   ├── create_csv_from_json.py           # CSV 파일 생성
+│   ├── load_test_data.py                 # Python 테스트 데이터 로더
 │   └── run_tests_with_unique_id.py       # 테스트 오케스트레이션
 ├── test-results/                         # 테스트 결과 (비디오, 스크린샷)
 ├── playwright-report/                    # HTML 테스트 리포트
 ├── playwright.config.js                  # Playwright 설정
+├── requirements.txt                      # Python 의존성
 ├── .env.example                          # 환경 변수 템플릿
 ├── package.json                          # 프로젝트 의존성
 └── README.md                             # 프로젝트 문서
@@ -82,7 +84,12 @@ npm install
 npx playwright install
 ```
 
-### 3. 환경 설정
+### 3. Python 의존성 설치
+```bash
+pip install -r requirements.txt
+```
+
+### 4. 환경 설정
 
 민감 정보(URL, 계정 비밀번호)는 `.env` 파일로 관리합니다.
 
