@@ -1,0 +1,51 @@
+{
+  "domain": "",
+  "test_users": {
+    "A": {
+      "id": "",
+      "password": ""
+    },
+    "B": {
+      "id": "",
+      "password": "",
+      "name": "auto테스트",
+      "initial_password": ""
+    }
+  },
+  "validation_messages": {
+    "name_min_length": "이름은 최소 2자 이상이어야 합니다",
+    "success_registration": "사용자 등록이 완료되었습니다.",
+    "name_required": "이름을 입력해주세요",
+    "id_required": "아이디를 입력해주세요",
+    "id_format": "아이디는 영문 소문자와 숫자만 사용 가능합니다",
+    "password_min_length": "비밀번호는 최소 8자 이상이어야 합니다.",
+    "password_confirm_required": "비밀번호 확인을 입력해주세요."
+  },
+  "invalid_test_data": {
+    "wrong_names": {
+      "wrong_name_1": "a",
+      "wrong_name_2": "a0",
+      "wrong_name_3": "a@"
+    },
+    "wrong_ids": {
+      "wrong_id_1": "qa0",
+      "wrong_id_2": "qa0A",
+      "wrong_id_3": "qa0@"
+    },
+    "wrong_passwords": {
+      "wrong_pw_1": "qa!2025",
+      "wrong_pw_2": "qatest2025",
+      "wrong_pw_3": "qatest!@#$",
+      "wrong_pw_4": "!@#$12345"
+    }
+  },
+  "id_generation": {
+    "pattern": "testuser + YYYYMMDD + HHMMSS (최대 20자)",
+    "description": "매번 테스트 실행 시마다 유니크한 ID를 생성합니다. 형식: testuser + 날짜 + 시간 (영문 소문자와 숫자만, 최대 20자)",
+    "constraints": {
+      "max_length": 20,
+      "allowed_chars": "영문 소문자와 숫자만",
+      "format": "testuser + 날짜 + 시간"
+    }
+  }
+}
