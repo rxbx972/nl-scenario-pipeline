@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { PROJECT_ROOT } from '../data/load-test-data.js';
+import { PROJECT_ROOT } from '../test-data/load-test-data.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

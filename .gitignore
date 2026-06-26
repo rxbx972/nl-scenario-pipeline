@@ -172,3 +172,6 @@ dmypy.json
 
 # MCP 러너 결과
 playwright-mcp-e2e/results/ 
+
+# etc
+etc/

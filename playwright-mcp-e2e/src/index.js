@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { loadTestData, PROJECT_ROOT } from '../data/load-test-data.js';
+import { loadTestData, PROJECT_ROOT } from '../test-data/load-test-data.js';
 import { loadScenarios, filterByScenarioId, listScenarioIds } from './scenario/load-csv.js';
 import { replacePlaceholders } from './scenario/placeholders.js';
 import { PlaywrightMcpClient } from './mcp/client.js';

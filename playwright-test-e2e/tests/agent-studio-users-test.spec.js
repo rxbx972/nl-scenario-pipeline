@@ -18,7 +18,7 @@ function generateUniqueId() {
 
 // CSV 시나리오 데이터 로드
 function loadScenarios() {
-    const csvPath = path.join(__dirname, '../test-data/users-test-scenarios.csv');
+    const csvPath = path.join(__dirname, '../../test-data/users-test-scenarios.csv');
     const csvContent = fs.readFileSync(csvPath, 'utf8');
     const lines = csvContent.split('\n');
     const headers = lines[0].split(',');

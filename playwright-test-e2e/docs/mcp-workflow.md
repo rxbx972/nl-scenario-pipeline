@@ -1,13 +1,8 @@
 # Playwright MCP 워크플로우
 
-이 프로젝트는 **하이브리드** 방식을 사용합니다.
+역할 분담·하이브리드 구조는 [architecture.md#playwright-mcp--playwright-test-하이브리드](architecture.md#playwright-mcp--playwright-test-하이브리드)를 참고하세요. 
 
-| 단계 | 도구 | 역할 |
-|------|------|------|
-| 탐색·작성 | Playwright MCP (Cursor) | UI 확인, 셀렉터·플로우 파악, CSV/`executeScenario` 초안 |
-| 회귀 실행 | Playwright Test (`npx playwright test`) | CI·로컬 자동화, 리포트·영상 수집 |
-
-MCP는 테스트 러너가 아닙니다. 저장·재실행 가능한 자동화는 Playwright Test가 담당합니다.
+MCP는 테스트 러너가 아니며, 회귀 실행은 Playwright Test가 담당합니다.
 
 ## MCP 설정
 
@@ -39,7 +34,9 @@ Stage URL만 허용하려면 `args`에 `--allowed-origins`를 추가합니다 (`
 ## 시나리오 작성 흐름
 
 ```
-1. CSV에 Step·Expected Result 초안 작성 (users-test-scenarios.csv)
+0. (필요 시) test-data.json에 검증 메시지·입력값 추가
+        ↓
+1. 루트 `test-data/users-test-scenarios.csv`에 Step·Expected Result 초안 작성
         ↓
 2. Cursor + Playwright MCP로 해당 Step을 브라우저에서 수행
         ↓
@@ -49,6 +46,8 @@ Stage URL만 허용하려면 `args`에 `--allowed-origins`를 추가합니다 (`
         ↓
 5. npx playwright test --grep "시나리오ID" 로 회귀 확인
 ```
+
+코드 반영 상세는 [CONTRIBUTING.md#새-시나리오-추가](CONTRIBUTING.md#새-시나리오-추가)를 참고하세요.
 
 ## Cursor에서 쓸 만한 프롬프트 예시
 
@@ -76,23 +75,27 @@ browser_verify_text_visible로 확인해줘.
 
 ## MCP 도구 ↔ 프로젝트 파일 매핑
 
-| MCP 도구 | 프로젝트에서의 대응 |
-|----------|-------------------|
-| `browser_navigate` | `performLogin()`, `page.goto()` |
-| `browser_snapshot` | 실패 시 `error-context.md`와 유사한 화면 파악 |
-| `browser_fill_form` / `browser_type` | `executeScenario()` 입력 분기 |
-| `browser_verify_text_visible` | Expected Result 검증 분기 |
-| `browser_generate_locator` | spec 셀렉터 작성 시 참고 |
+
+| MCP 도구                               | 프로젝트에서의 대응                         |
+| ------------------------------------ | ---------------------------------- |
+| `browser_navigate`                   | `performLogin()`, `page.goto()`    |
+| `browser_snapshot`                   | 실패 시 `error-context.md`와 유사한 화면 파악 |
+| `browser_fill_form` / `browser_type` | `executeScenario()` 입력 분기          |
+| `browser_verify_text_visible`        | Expected Result 검증 분기              |
+| `browser_generate_locator`           | spec 셀렉터 작성 시 참고                   |
+
 
 ## UI 변경 후 갱신 순서
 
 1. **MCP** — 변경된 화면에서 네비게이션·버튼·메시지를 직접 확인
 2. **CSV** — Step·Expected Result 문구를 현행 UI에 맞게 수정
 3. **spec** — `executeScenario()` 셀렉터·분기 수정
-4. **Playwright Test** — `--headed --reporter=list`로 전체 회귀
+4. **Playwright Test** — 회귀 확인 ([README.md#실행](../README.md#실행) 참고)
 
 ## 관련 문서
 
-- 실행·리포트: [architecture.md#테스트-아티팩트](architecture.md#테스트-아티팩트)
+- 패키지 개요·실행: [README.md](../README.md)
+- 설계·아티팩트: [architecture.md#테스트-아티팩트](architecture.md#테스트-아티팩트)
 - 시나리오·코드 추가: [CONTRIBUTING.md](CONTRIBUTING.md)
 - [Playwright MCP 공식 문서](https://playwright.dev/mcp/introduction)
+

@@ -51,7 +51,7 @@ function applyEnvConfig(testData) {
 export function loadTestData({ validate = true } = {}) {
   if (validate) validateEnv();
   if (!fs.existsSync(TEST_DATA_PATH)) {
-    throw new Error('data/test-data.json 파일이 필요합니다.');
+    throw new Error('test-data/test-data.json 파일이 필요합니다.');
   }
   const testData = JSON.parse(fs.readFileSync(TEST_DATA_PATH, 'utf8'));
   return applyEnvConfig(testData);

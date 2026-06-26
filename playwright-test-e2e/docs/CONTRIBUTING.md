@@ -1,13 +1,8 @@
 # Contributing
 
-## 코드 구조
+전체 디렉터리 구조는 [README.md](../README.md#프로젝트-구조)를 참고하세요.
 
-```
-tests/
-├── agent-studio-users-test.spec.js   # CSV 시나리오 실행 + 테스트 정의
-└── helpers/
-    └── normalize-test-results.js     # test-results 폴더명 정규화
-```
+## 주요 함수
 
 | 함수 | 역할 |
 |------|------|
@@ -20,9 +15,10 @@ tests/
 
 ## 새 시나리오 추가
 
-0. **(권장)** [mcp-workflow.md](mcp-workflow.md) — Cursor Playwright MCP로 Step을 브라우저에서 먼저 확인
-1. `test-data/test-data.json` — 검증 메시지·입력값 추가 (비민감 데이터)
-2. `test-data/users-test-scenarios.csv` — `Scenario Id`, `Step Id`, `Step`, `Expected Result` 행 추가
+[mcp-workflow.md#시나리오-작성-흐름](mcp-workflow.md#시나리오-작성-흐름)을 따릅니다. spec·코드 반영은 아래 순서로 진행하세요.
+
+1. `test-data/test-data.json` — 검증 메시지·입력값 추가 (필요 시)
+2. 루트 `test-data/users-test-scenarios.csv` — `Scenario Id`, `Step Id`, `Step`, `Expected Result` 행 추가
 3. `replacePlaceholders()` — 새 플레이스홀더 패턴 등록 (필요 시)
 4. `executeScenario()` — Step·Expected Result 분기 추가
 5. `agent-studio-users-test.spec.js` — `test()` 블록 추가
@@ -50,21 +46,20 @@ test('users_XX_YY: 설명', async ({ page }) => {
 
 `tests/helpers/normalize-test-results.js`의 `extractScenarioSlug()`에 새 시나리오 ID 패턴을 추가하면 `test-results/users-XX-YY-chromium` 형식으로 정리됩니다.
 
-## UI·정책 변경 시 점검 순서
+## UI·정책 변경 시 점검
 
-1. **Playwright MCP** — 변경된 화면·네비게이션을 Cursor에서 직접 확인 ([mcp-workflow.md](mcp-workflow.md))
-2. `users-test-scenarios.csv` — Step·Expected Result가 현행 UI와 일치하는지 확인
-3. `executeScenario()` — 셀렉터·네비게이션 플로우 수정
-4. `test-data.json` — 검증 메시지 문구 확인
-5. 미구현 시나리오 — `users_03_02` ~ `users_05_01`, `users_lifecycle` 재개
+MCP 탐색 → CSV → spec → 회귀 실행 순서는 [mcp-workflow.md#ui-변경-후-갱신-순서](mcp-workflow.md#ui-변경-후-갱신-순서)를 따릅니다. 추가로 아래를 확인하세요.
+
+- `test-data.json` — 검증 메시지 문구가 현행 UI와 일치하는지
+- 미구현 시나리오 — `users_03_02` ~ `users_05_01`, `users_lifecycle` 재개 여부
 
 ## 로컬 실행
 
+기본 실행 명령은 [README.md#실행](../README.md#실행)을 참고하세요. 개발 시 자주 쓰는 옵션:
+
 ```bash
-npx playwright test --grep "users_02_01"           # 단일 시나리오
-npx playwright test --headed --reporter=list       # 디버깅
-npx playwright test --grep-invert "users_lifecycle" # 통합 테스트 제외
+npx playwright test --grep-invert "users_lifecycle"   # 통합 테스트 제외
 ```
 
-설계 배경·스크립트 역할 → [architecture.md](architecture.md)  
+설계 배경·데이터 흐름 → [architecture.md](architecture.md)  
 MCP 탐색·작성 → [mcp-workflow.md](mcp-workflow.md)

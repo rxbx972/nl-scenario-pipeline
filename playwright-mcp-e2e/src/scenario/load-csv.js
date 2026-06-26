@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CSV_PATH = path.join(__dirname, '../../data/users-test-scenarios.csv');
+const CSV_PATH = path.join(__dirname, '../../../test-data/users-test-scenarios.csv');
 
 /** 간단한 CSV 파서 (따옴표 필드 지원) */
 function parseCsvLine(line) {
