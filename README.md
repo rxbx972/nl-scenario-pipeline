@@ -12,9 +12,11 @@
 ```
 nl-scenario-pipeline/
 ├── test-data/
-│   └── users-test-scenarios.csv   # 두 패키지 공유 시나리오 CSV
-├── playwright-test-e2e/           # Playwright Test — 회귀·CI
+│   ├── users-test-scenarios.csv      # 두 패키지 공유 시나리오 CSV
+│   └── scenario-writing-guide.md     # CSV Step · Expected Result 작성 가이드 (QA용)
+├── playwright-test-e2e/              # Playwright Test — 회귀·CI
 ├── playwright-mcp-e2e/            # Playwright MCP CLI 러너 (rules 기본)
+├── docs/troubleshooting/          # PoC 구축 중 이슈·해결 기록
 ├── .cursor/mcp.json               # Cursor용 Playwright MCP (test-e2e 탐색·작성)
 └── README.md
 ```
@@ -32,6 +34,7 @@ nl-scenario-pipeline/
 | **CI·회귀** | 적합 (리포트·영상·병렬) | `rules` 제한적 · `llm`은 비결정성 |
 | **결과물** | `test-results/`, `playwright-report/` | `results/` (JSON 로그·스크린샷) |
 | **시나리오 CSV** | [test-data/users-test-scenarios.csv](test-data/users-test-scenarios.csv) | 동일 (공유) |
+| **CSV 작성 가이드** | [scenario-writing-guide.md](test-data/scenario-writing-guide.md) | 동일 (공유, `executeScenario` 기준) |
 
 ## PoC 현황
 
@@ -42,6 +45,12 @@ nl-scenario-pipeline/
 **[playwright-test-e2e](playwright-test-e2e/)** — 마지막 성공 실행 2025-08-04: 9/9 통과, 21.9초 (`users_02_03`·`users_lifecycle` 제외)
 
 **[playwright-mcp-e2e](playwright-mcp-e2e/)** — `rules`: `users_01_01` 전체, `users_01_02` 일부(step 5~6 미지원). 그 외는 `llm` 모드 시도
+
+## 주요 이슈와 해결
+
+PoC 구축(2025.06~08) 중 Expected Result 문구 불일치로 검증이 건너뛰어지는 **False Pass**, 5워커 병렬 실행 시 공유 파일 동시 쓰기 **Race Condition** 등을 해결했습니다. UI 셀렉터 불안정·민감 정보 분리·MCP 탐색/회귀 역할 분리 이슈도 함께 정리해 두었습니다.
+
+상세: [docs/troubleshooting/](docs/troubleshooting/)
 
 ## Quick Start
 
