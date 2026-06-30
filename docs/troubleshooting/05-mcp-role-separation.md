@@ -54,7 +54,7 @@ LLM·rules로 Step 해석             executeScenario() 결정론적 분기
 | 가정 | 실제 |
 |------|------|
 | "MCP = 테스트 실행기" | MCP는 **브라우저 조작 프로토콜** — 러너·assertion·리포트는 별도 |
-| "자연어면 LLM이 알아서 검증" | Expected Result 키워드 불일치 시 False Pass ([Troubleshooting01_0629.md](./Troubleshooting01_0629.md)) |
+| "자연어면 LLM이 알아서 검증" | Expected Result 키워드 불일치 시 False Pass ([01-false-pass.md](./01-false-pass.md)) |
 | "AI 주도 = 전 구간 AI" | 작성·탐색은 MCP, **회귀는 결정론적 코드**가 안정적 |
 
 ---
@@ -86,7 +86,7 @@ LLM·rules로 Step 해석             executeScenario() 결정론적 분기
 
 ### 3.2 MCP 워크플로우 (작성 시)
 
-[playwright-test-e2e/docs/mcp-workflow.md](../playwright-test-e2e/docs/mcp-workflow.md)에 정리된 5단계:
+[playwright-test-e2e/docs/mcp-workflow.md](../../playwright-test-e2e/docs/mcp-workflow.md)에 정리된 5단계:
 
 1. `test-data.json`에 검증 메시지 추가 (필요 시)
 2. CSV에 Step·Expected Result 초안
@@ -176,7 +176,7 @@ CSV ──► MCP (탐색·작성) ──► spec + CSV 정비
 
 - [ ] MCP로 **UI 탐색·셀렉터 확인·CSV 초안** — 실행기로 착각하지 않기
 - [ ] 회귀·CI는 **Playwright Test**(또는 동등한 결정론적 러너) 사용
-- [ ] Expected Result는 코드 분기와 1:1 매핑 ([Troubleshooting01_0629.md](./Troubleshooting01_0629.md))
+- [ ] Expected Result는 코드 분기와 1:1 매핑 ([01-false-pass.md](./01-false-pass.md))
 - [ ] `llm` 모드는 **탐색·PoC**에만 — 회귀 게이트에 넣지 않기
 - [ ] `--allowed-origins`로 Stage URL 제한
 - [ ] MCP 세션 결과(셀렉터·분기)는 **spec·CSV에 커밋** — 세션 자체는 재현 불가

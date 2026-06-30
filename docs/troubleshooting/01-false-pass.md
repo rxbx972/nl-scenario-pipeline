@@ -237,7 +237,7 @@ Expected Result: … 유효성 검사 오류 메시지가 …  ← 코드가 읽
 
 ## 10. 새 시나리오 작성 체크리스트
 
-> 전체 Step·Expected Result 템플릿: [scenario-writing-guide.md](../test-data/scenario-writing-guide.md) §3~§4
+> 전체 Step·Expected Result 템플릿: [scenario-writing-guide.md](../../test-data/scenario-writing-guide.md) §3~§4
 
 유효성 검사 Expected Result 작성 시 아래를 확인한다.
 

@@ -15,7 +15,7 @@
 |------|------|
 | 당시 구조 | `test-data.json`에 `domain`, `test_users.A/B` (id, password) 혼재 |
 | 부가 문제 | `.env`와 JSON **이중 관리** — 어느 쪽이 source of truth인지 불명확 |
-| 연관 이슈 | `generate_unique_id.py`가 JSON의 `test_users.B.id`를 갱신 → Race Condition 대상이 JSON이었음 ([Troubleshooting02_0629.md](./Troubleshooting02_0629.md)) |
+| 연관 이슈 | `generate_unique_id.py`가 JSON의 `test_users.B.id`를 갱신 → Race Condition 대상이 JSON이었음 ([02-race-condition-jsondecode.md](./02-race-condition-jsondecode.md)) |
 
 ### 재현 조건
 
@@ -147,7 +147,7 @@ TEST_USER_B_ID=          # generate_unique_id.py 자동 갱신
 |------|------|
 | 민감 정보 Git 노출 | `.env` gitignore, JSON에서 계정·URL 제거 |
 | 온보딩 | `cp .env.example .env` 한 단계로 계정 설정 |
-| Race Condition | ID 갱신 대상이 `.env`로 이동 ([Troubleshooting02_0629.md](./Troubleshooting02_0629.md) §5) |
+| Race Condition | ID 갱신 대상이 `.env`로 이동 ([02-race-condition-jsondecode.md](./02-race-condition-jsondecode.md) §5) |
 | UI 문구 변경 | `test-data.json`만 수정 — 계정 파일 분리 |
 
 ---

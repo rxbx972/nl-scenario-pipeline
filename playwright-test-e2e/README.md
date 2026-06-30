@@ -53,7 +53,7 @@ playwright-test-e2e/
 | --------------------------------------- | ------------------------------------------------------------------------ |
 | [architecture.md](docs/architecture.md) | CSV 분리 · `executeScenario` · `.env`/`test-data.json` 역할 · MCP+Test 하이브리드 |
 | [mcp-workflow.md](docs/mcp-workflow.md) | Cursor Playwright MCP 설정 · UI 탐색 → CSV/`executeScenario` 반영 흐름           |
-| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | 새 시나리오 추가 절차 · 주요 함수 · 코딩 규칙                                             |
+| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | 새 시나리오 추가 절차 · 주요 함수 · 코딩 규칙 |
 
 
 ## 환경 설정
@@ -99,7 +99,7 @@ npx playwright show-report
 
 실패 시 `test-results/users-XX-YY-chromium/`에서 `video.webm`, `failed.png`, `error-context.md`를 확인합니다. 아티팩트 설정 상세는 [architecture.md#테스트-아티팩트](docs/architecture.md#테스트-아티팩트).
 
-시나리오 목록: [`test-data/users-test-scenarios.csv`](../test-data/users-test-scenarios.csv) · 개발용 실행 옵션: [CONTRIBUTING.md#로컬-실행](docs/CONTRIBUTING.md#로컬-실행)
+시나리오 목록: [`test-data/users-test-scenarios.csv`](../test-data/users-test-scenarios.csv) · CSV 작성 가이드: [scenario-writing-guide.md](../test-data/scenario-writing-guide.md) · 개발용 실행 옵션: [CONTRIBUTING.md#로컬-실행](docs/CONTRIBUTING.md#로컬-실행)
 
 ---
 

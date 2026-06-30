@@ -13,6 +13,10 @@
 | `navigateToUserManagement()` | 사용자 관리 화면 이동 |
 | `navigateToUserRegistration()` | 사용자 등록 화면 이동 |
 
+## 시나리오 CSV 작성 (QA)
+
+기존 시나리오 문구만 수정할 때는 루트 [scenario-writing-guide.md](../../test-data/scenario-writing-guide.md)의 **Step 템플릿·Expected Result 키워드**를 따릅니다.
+
 ## 새 시나리오 추가
 
 [mcp-workflow.md#시나리오-작성-흐름](mcp-workflow.md#시나리오-작성-흐름)을 따릅니다. spec·코드 반영은 아래 순서로 진행하세요.
